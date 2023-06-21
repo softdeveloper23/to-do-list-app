@@ -3,6 +3,7 @@ const listContainer = document.getElementById("list-container");
 function addTask() {
     if (inputBox.value === '') {
         alert("You must write something!");
+        /*return;*/
     } else {
         let li = document.createElement("li");
         li.innerHTML = inputBox.value;
@@ -11,7 +12,7 @@ function addTask() {
         span.innerHTML = "\u00d7";
         li.appendChild(span);
     }
-    inputBox.value = " ";
+    inputBox.value = "";
 }
 
 listContainer.addEventListener("click", function (e) {
@@ -21,3 +22,10 @@ listContainer.addEventListener("click", function (e) {
         e.target.parentElement.remove();
     }
 }, false);
+
+inputBox.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        addTask();
+    }
+});
