@@ -26,6 +26,14 @@ listContainer.addEventListener("click", function (e) {
     }
 }, false);
 
+inputBox.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        addTask();
+        saveData();
+    }
+});
+
 function saveData() {
     localStorage.setItem("data", listContainer.innerHTML);
 }
@@ -35,11 +43,3 @@ function showTask() {
 }
 
 showTask();
-
-inputBox.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        addTask();
-        saveData();
-    }
-});
